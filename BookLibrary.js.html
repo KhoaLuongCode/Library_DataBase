@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>BookLibrary.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+.s5 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+BookLibrary.js</font>
+</center></td></tr></table>
+<pre><span class="s0">let </span><span class="s1">myLibrary </span><span class="s2">= </span><span class="s1">JSON</span><span class="s2">.</span><span class="s1">parse</span><span class="s2">(</span><span class="s1">localStorage</span><span class="s2">.</span><span class="s1">getItem</span><span class="s2">(</span><span class="s3">'myLibrary'</span><span class="s2">)) || [];</span>
+
+<span class="s0">function </span><span class="s1">Book </span><span class="s2">(</span><span class="s1">titleOfTheBook</span><span class="s2">, </span><span class="s1">authorOfTheBook</span><span class="s2">,</span><span class="s1">numberOfPages</span><span class="s2">, </span><span class="s1">haveRead</span><span class="s2">, </span><span class="s1">rating</span><span class="s2">){</span>
+    <span class="s0">this</span><span class="s2">.</span><span class="s1">titleOfTheBook </span><span class="s2">= </span><span class="s1">titleOfTheBook</span><span class="s2">;</span>
+    <span class="s0">this</span><span class="s2">.</span><span class="s1">authorOfTheBook </span><span class="s2">= </span><span class="s1">authorOfTheBook</span><span class="s2">;</span>
+    <span class="s0">this</span><span class="s2">.</span><span class="s1">numberOfPages </span><span class="s2">= </span><span class="s1">numberOfPages</span><span class="s2">;</span>
+    <span class="s0">this</span><span class="s2">.</span><span class="s1">haveRead </span><span class="s2">= </span><span class="s1">haveRead</span><span class="s2">;</span>
+    <span class="s0">this</span><span class="s2">.</span><span class="s1">rating </span><span class="s2">= </span><span class="s1">rating</span><span class="s2">;</span>
+<span class="s2">}</span>
+
+<span class="s0">const </span><span class="s1">addMeBook </span><span class="s2">= </span><span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;addMeButton&quot;</span><span class="s2">)</span>
+
+<span class="s1">addMeBook</span><span class="s2">.</span><span class="s1">addEventListener</span><span class="s2">(</span><span class="s3">&quot;click&quot;</span><span class="s2">, </span><span class="s1">addBookToTheLibrary</span><span class="s2">)</span>
+
+<span class="s0">function </span><span class="s1">addBookToTheLibrary</span><span class="s2">(){</span>
+
+    <span class="s0">const </span><span class="s1">titleOfTheBook </span><span class="s2">= </span><span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;form1&quot;</span><span class="s2">).</span><span class="s1">value</span><span class="s2">;</span>
+    <span class="s0">const </span><span class="s1">authorOfTheBook </span><span class="s2">= </span><span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;form2&quot;</span><span class="s2">).</span><span class="s1">value</span><span class="s2">;</span>
+    <span class="s0">const </span><span class="s1">numberOfPages </span><span class="s2">= </span><span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;form3&quot;</span><span class="s2">).</span><span class="s1">value</span><span class="s2">;</span>
+    <span class="s0">const </span><span class="s1">haveRead </span><span class="s2">= </span><span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;form4&quot;</span><span class="s2">).</span><span class="s1">value</span><span class="s2">;</span>
+    <span class="s0">const </span><span class="s1">rating </span><span class="s2">= </span><span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;form5&quot;</span><span class="s2">).</span><span class="s1">value</span><span class="s2">;</span>
+
+    <span class="s0">if </span><span class="s2">(!</span><span class="s1">titleOfTheBook </span><span class="s2">|| !</span><span class="s1">authorOfTheBook </span><span class="s2">|| !</span><span class="s1">numberOfPages </span><span class="s2">|| !</span><span class="s1">haveRead </span><span class="s2">|| !</span><span class="s1">rating</span><span class="s2">) {</span>
+        <span class="s1">alert</span><span class="s2">(</span><span class="s3">&quot;Please fill in all the fields before adding the book.&quot;</span><span class="s2">);</span>
+        <span class="s0">return</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">if </span><span class="s2">(</span><span class="s1">haveRead </span><span class="s2">!== </span><span class="s3">&quot;Yes&quot; </span><span class="s2">&amp;&amp; </span><span class="s1">haveRead </span><span class="s2">!== </span><span class="s3">&quot;No&quot;</span><span class="s2">) {</span>
+        <span class="s1">alert</span><span class="s2">(</span><span class="s3">&quot;Please enter either 'Yes' or 'No' for 'Have you read the book?'&quot;</span><span class="s2">);</span>
+        <span class="s0">return</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">if </span><span class="s2">(</span><span class="s1">rating </span><span class="s2">&lt; </span><span class="s4">0</span><span class="s2">){</span>
+        <span class="s1">alert</span><span class="s2">(</span><span class="s3">&quot;Please enter something greater than 0&quot;</span><span class="s2">)</span>
+        <span class="s0">return</span><span class="s2">;</span>
+    <span class="s2">}</span>
+    <span class="s0">if </span><span class="s2">(</span><span class="s1">rating </span><span class="s2">&gt; </span><span class="s4">5</span><span class="s2">){</span>
+        <span class="s1">alert</span><span class="s2">(</span><span class="s3">&quot;Please only rate the book from 1 to 5&quot;</span><span class="s2">)</span>
+        <span class="s0">return</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">let </span><span class="s1">addBook </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Book</span><span class="s2">(</span><span class="s1">titleOfTheBook</span><span class="s2">, </span><span class="s1">authorOfTheBook</span><span class="s2">, </span><span class="s1">numberOfPages</span><span class="s2">, </span><span class="s1">haveRead</span><span class="s2">, </span><span class="s1">rating</span><span class="s2">)</span>
+    <span class="s1">myLibrary</span><span class="s2">.</span><span class="s1">push</span><span class="s2">(</span><span class="s1">addBook</span><span class="s2">)</span>
+    <span class="s1">localStorage</span><span class="s2">.</span><span class="s1">setItem</span><span class="s2">(</span><span class="s3">'myLibrary'</span><span class="s2">, </span><span class="s1">JSON</span><span class="s2">.</span><span class="s1">stringify</span><span class="s2">(</span><span class="s1">myLibrary</span><span class="s2">));</span>
+    <span class="s1">displayBooks</span><span class="s2">()</span>
+
+    <span class="s5">//resets</span>
+    <span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;form1&quot;</span><span class="s2">).</span><span class="s1">value </span><span class="s2">= </span><span class="s3">''</span><span class="s2">;</span>
+    <span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;form2&quot;</span><span class="s2">).</span><span class="s1">value </span><span class="s2">= </span><span class="s3">''</span><span class="s2">;</span>
+    <span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;form3&quot;</span><span class="s2">).</span><span class="s1">value </span><span class="s2">= </span><span class="s3">''</span><span class="s2">;</span>
+    <span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;form4&quot;</span><span class="s2">).</span><span class="s1">value </span><span class="s2">= </span><span class="s3">''</span><span class="s2">;</span>
+    <span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;form5&quot;</span><span class="s2">).</span><span class="s1">value </span><span class="s2">= </span><span class="s3">''</span><span class="s2">;</span>
+<span class="s2">}</span>
+
+<span class="s0">const </span><span class="s1">displayBook </span><span class="s2">= </span><span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;displayBook&quot;</span><span class="s2">)</span>
+
+<span class="s0">function </span><span class="s1">displayBooks</span><span class="s2">() {</span>
+    <span class="s1">displayContainer</span><span class="s2">.</span><span class="s1">innerHTML </span><span class="s2">= </span><span class="s3">&quot;&quot;</span><span class="s2">; </span><span class="s5">// Clear previous content</span>
+
+    <span class="s1">myLibrary</span><span class="s2">.</span><span class="s1">forEach</span><span class="s2">((</span><span class="s1">book</span><span class="s2">, </span><span class="s1">index</span><span class="s2">) =&gt; {</span>
+        <span class="s0">const </span><span class="s1">displayContainer </span><span class="s2">= </span><span class="s1">document</span><span class="s2">.</span><span class="s1">getElementById</span><span class="s2">(</span><span class="s3">&quot;displayContainer&quot;</span><span class="s2">);</span>
+        <span class="s0">const </span><span class="s1">bookDiv </span><span class="s2">= </span><span class="s1">document</span><span class="s2">.</span><span class="s1">createElement</span><span class="s2">(</span><span class="s3">&quot;div&quot;</span><span class="s2">);</span>
+
+
+        <span class="s1">bookDiv</span><span class="s2">.</span><span class="s1">classList</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s3">&quot;bookContainer&quot;</span><span class="s2">);</span>
+
+        <span class="s1">bookDiv</span><span class="s2">.</span><span class="s1">innerHTML </span><span class="s2">= </span><span class="s3">`</span>
+            <span class="s3">&lt;p&gt; &lt;strong&gt; Title: &lt;/strong&gt; </span><span class="s1">$</span><span class="s2">{</span><span class="s1">book</span><span class="s2">.</span><span class="s1">titleOfTheBook</span><span class="s2">}</span><span class="s3">&lt;/p&gt; 
+            &lt;p&gt; &lt;strong&gt; Author: &lt;/strong&gt; </span><span class="s1">$</span><span class="s2">{</span><span class="s1">book</span><span class="s2">.</span><span class="s1">authorOfTheBook</span><span class="s2">}</span><span class="s3">&lt;/p&gt; 
+            &lt;p&gt; &lt;strong&gt; Pages: &lt;/strong&gt; </span><span class="s1">$</span><span class="s2">{</span><span class="s1">book</span><span class="s2">.</span><span class="s1">numberOfPages</span><span class="s2">}</span><span class="s3">&lt;/p&gt; 
+            &lt;p&gt; &lt;strong&gt; Read: &lt;/strong&gt; </span><span class="s1">$</span><span class="s2">{</span><span class="s1">book</span><span class="s2">.</span><span class="s1">haveRead</span><span class="s2">}</span><span class="s3">&lt;/p&gt; 
+            &lt;p&gt; &lt;strong&gt; Rating: &lt;/strong&gt; </span><span class="s1">$</span><span class="s2">{</span><span class="s1">book</span><span class="s2">.</span><span class="s1">rating</span><span class="s2">} </span><span class="s3">&lt;/p&gt; 
+        `</span><span class="s2">;</span>
+
+
+        <span class="s5">// create button right inside javascript</span>
+        <span class="s0">const </span><span class="s1">readButton </span><span class="s2">= </span><span class="s1">document</span><span class="s2">.</span><span class="s1">createElement</span><span class="s2">(</span><span class="s3">&quot;button&quot;</span><span class="s2">)</span>
+        <span class="s1">readButton</span><span class="s2">.</span><span class="s1">textContent </span><span class="s2">= </span><span class="s1">book</span><span class="s2">.</span><span class="s1">haveRead </span><span class="s2">=== </span><span class="s3">&quot;Yes&quot; </span><span class="s2">? </span><span class="s3">&quot;Mark Unread&quot; </span><span class="s2">: </span><span class="s3">&quot;Mark Read&quot;</span><span class="s2">;</span>
+        <span class="s1">readButton</span><span class="s2">.</span><span class="s1">addEventListener</span><span class="s2">(</span><span class="s3">&quot;click&quot;</span><span class="s2">, () =&gt; </span><span class="s1">readStatus</span><span class="s2">(</span><span class="s1">index</span><span class="s2">));</span>
+        <span class="s1">bookDiv</span><span class="s2">.</span><span class="s1">appendChild</span><span class="s2">(</span><span class="s1">readButton</span><span class="s2">);</span>
+
+        <span class="s1">readButton</span><span class="s2">.</span><span class="s1">classList</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s3">&quot;haveReadButton&quot;</span><span class="s2">)</span>
+
+        <span class="s5">// create a removed button</span>
+        <span class="s0">const </span><span class="s1">removeButton </span><span class="s2">= </span><span class="s1">document</span><span class="s2">.</span><span class="s1">createElement</span><span class="s2">(</span><span class="s3">&quot;button&quot;</span><span class="s2">)</span>
+        <span class="s1">removeButton</span><span class="s2">.</span><span class="s1">textContent </span><span class="s2">= </span><span class="s3">&quot;Remove the book&quot;</span><span class="s2">;</span>
+        <span class="s1">removeButton</span><span class="s2">.</span><span class="s1">addEventListener</span><span class="s2">(</span><span class="s3">&quot;click&quot;</span><span class="s2">, () =&gt; </span><span class="s1">deleteBook</span><span class="s2">(</span><span class="s1">index</span><span class="s2">));</span>
+        <span class="s1">bookDiv</span><span class="s2">.</span><span class="s1">appendChild</span><span class="s2">(</span><span class="s1">removeButton</span><span class="s2">);</span>
+
+        <span class="s1">removeButton</span><span class="s2">.</span><span class="s1">classList</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s3">&quot;removeBookButton&quot;</span><span class="s2">)</span>
+
+        <span class="s1">displayContainer</span><span class="s2">.</span><span class="s1">appendChild</span><span class="s2">(</span><span class="s1">bookDiv</span><span class="s2">);</span>
+    <span class="s2">});</span>
+<span class="s2">}</span>
+
+
+<span class="s1">displayBook</span><span class="s2">.</span><span class="s1">addEventListener</span><span class="s2">(</span><span class="s3">&quot;click&quot;</span><span class="s2">, </span><span class="s1">displayBooks</span><span class="s2">)</span>
+
+
+<span class="s0">function </span><span class="s1">readStatus</span><span class="s2">(</span><span class="s1">index</span><span class="s2">){</span>
+    <span class="s1">myLibrary</span><span class="s2">[</span><span class="s1">index</span><span class="s2">].</span><span class="s1">haveRead </span><span class="s2">= </span><span class="s1">myLibrary</span><span class="s2">[</span><span class="s1">index</span><span class="s2">].</span><span class="s1">haveRead </span><span class="s2">=== </span><span class="s3">&quot;Yes&quot; </span><span class="s2">? </span><span class="s3">&quot;No&quot; </span><span class="s2">: </span><span class="s3">&quot;Yes&quot;</span><span class="s2">;</span>
+    <span class="s1">localStorage</span><span class="s2">.</span><span class="s1">setItem</span><span class="s2">(</span><span class="s3">'myLibrary'</span><span class="s2">, </span><span class="s1">JSON</span><span class="s2">.</span><span class="s1">stringify</span><span class="s2">(</span><span class="s1">myLibrary</span><span class="s2">));</span>
+    <span class="s1">displayBooks</span><span class="s2">();</span>
+<span class="s2">}</span>
+
+<span class="s0">function </span><span class="s1">deleteBook</span><span class="s2">(</span><span class="s1">index</span><span class="s2">){</span>
+    <span class="s1">myLibrary</span><span class="s2">.</span><span class="s1">splice</span><span class="s2">(</span><span class="s1">index</span><span class="s2">, </span><span class="s4">1</span><span class="s2">)</span>
+    <span class="s1">localStorage</span><span class="s2">.</span><span class="s1">setItem</span><span class="s2">(</span><span class="s3">'myLibrary'</span><span class="s2">, </span><span class="s1">JSON</span><span class="s2">.</span><span class="s1">stringify</span><span class="s2">(</span><span class="s1">myLibrary</span><span class="s2">));</span>
+    <span class="s1">displayBooks</span><span class="s2">()</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
