@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khoa's Library</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <section class="sideBar">
+            <h1 class="heading1"> Library </h1>
+            <h1 class="aboutSection">
+                About the Library
+            </h1>
+
+            <h3 class="aboutSectionContent">
+                An database that allows the readers to store books with local storage. This application was coded using HTML, CSS, and JavaScript.
+            </h3>
+
+            <h2 id="addingBooks"> Adding Books </h2>
+
+            <form id="titleOfTheBook">
+                <strong>
+                    What is the title of the book?
+                </strong>
+                <p></p>
+                <label>
+                    <input type="text" name="titleOfTheBook" id="form1">
+                </label>
+            </form>
+            <p></p>
+            <form id="authorOfTheBook">
+                <strong>
+                What is the author of the book?
+                </strong>
+                <p></p>
+                <label>
+                    <input type="text" name="titleOfTheBook" id="form2">
+                </label>
+            </form>
+            <p></p>
+            <form id="numberOfPages">
+                <strong>
+                How many pages that the book have?
+                </strong>
+                <p></p>
+                <label>
+                    <input type="text" name="numberOfPages" id="form3">
+                </label>
+            </form>
+            <p></p>
+            <form id="haveRead">
+                <strong>
+                Have you read the book. Please type either: Yes, No
+                </strong>
+                <p></p>
+                <label>
+                    <input type="text" name="haveRead" id="form4">
+                </label>
+            </form>
+            <p></p>
+            <form id="rating">
+                <strong>
+                On a scale of 1 to 5. Please rate the book
+                </strong>
+                <p></p>
+                <label>
+                    <input type="number" name="rating" id="form5" min="1" max="5">
+                </label>
+            </form>
+            <p></p>
+            <button id="addMeButton">
+                <strong>Add the book </strong>
+            </button>
+
+        </section>
+
+        <section class="mainContent">
+            <div id="displayContainer"></div>
+            <script src="BookLibrary.js"> </script>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    border-radius: 50px;
+}
+
+
+#displayContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.bookContainer {
+    background: none;
+    border: 0.1rem solid black;
+    display: inline-block;
+    width: 310px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: left; /* Center text inside the container */
+    font-family: "Tahoma", sans-serif;
+}
+
+.sideBar {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 500px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: peachpuff;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    flex: 1;
+}
+
+.sideBar h1.heading1{
+    margin-left: 1rem;
+}
+
+.heading1{
+    font-family: "Tahoma", sans-serif;
+    width: fit-content;
+    font-size: xxx-large;
+    color: black;
+    text-align: center;
+}
+
+
+.mainContent {
+    flex: 4; /* Take larger portion of space */
+    padding: 2rem;
+    margin-left: 500px;
+}
+
+
+#addingBooks{
+    font-family: "Tahoma", sans-serif;
+    color: black;
+    margin-left: 1rem;
+
+}
+
+.aboutSection{
+    margin-left: 1rem;
+    font-family: "Tahoma", sans-serif;
+    color: black;
+}
+
+.aboutSectionContent{
+    margin-left: 1rem;
+    font-family: "Tahoma", sans-serif;
+    color: black;
+    font-size: smaller;
+}
+
+
+#addMeButton {
+ background-color: rgba(21,129,176,255);
+ border-radius: 3px;
+ border: darkgrey;
+ box-shadow: grey;
+ box-sizing: border-box;
+ color: antiquewhite;
+ cursor: pointer;
+ display: flex;
+ font-family: "Tahoma",sans-serif;
+ font-size: 16px;
+ font-weight: 400;
+ margin: auto;
+ padding: 8px .8em;
+ position: relative;
+ text-align: center;
+    width: fit-content;
+ touch-action: manipulation;
+}
+
+#addMeButton:hover,
+#addMeButton:focus {
+    background-color: lightblue ;
+    color: #2c5777;
+}
+
+#addMeButton:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+#authorOfTheBook, #titleOfTheBook, #numberOfPages, #rating, #haveRead{
+    font-family: "Tahoma", sans-serif;
+    margin-left: 1rem;
+}
+
+#form1, #form2, #form3, #form4, #form5{
+    width: 450px;
+    font-family: "Tahoma", sans-serif;
+    height: 30px;
+}
+
+
+
+.removeBookButton {
+    background-color: indianred;
+    border-radius: 3px;
+    border: darkgrey;
+    box-shadow: grey;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    font-family: "Tahoma",sans-serif;
+    font-size: 16px;
+    margin-left: 0;
+    font-weight: bold;
+    padding: 5px 10px;
+    position: relative;
+    text-align: center;
+    width: fit-content;
+    touch-action: manipulation;
+}
+
+.removeBookButton:hover,
+.removeBookButton:focus {
+    background-color: lightblue ;
+    color: #2c5777;
+}
+
+
+.haveReadButton {
+    background-color: rgba(21,129,176,255);
+    border-radius: 3px;
+    border: darkgrey;
+    box-shadow: grey;
+    box-sizing: content-box;
+    color: antiquewhite;
+    cursor: pointer;
+    display: flex;
+    font-family: "Tahoma",sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 0;
+    margin-bottom: 7px;
+    padding: 5px 10px;
+    position: relative;
+    text-align: center;
+    width: fit-content;
+    touch-action: manipulation;
+}
+
+.haveReadButton:hover,
+.haveReadButton:focus {
+    background-color: lightblue ;
+    color: #2c5777;
+}
+
+
+
